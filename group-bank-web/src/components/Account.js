@@ -33,6 +33,7 @@ class Account extends Component{
   }
 
   refreshAccounts() {
+
       AccountDataService.retrieveAccountsByCustomer(AccountDataService.CUSTOMER)
       .then(
           response => {
