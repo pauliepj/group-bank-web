@@ -1,7 +1,8 @@
+import "../style/footer.css";
 function Footer() {
     
     return(
-        <footer class="page-footer font-small bg-primary">
+        <footer className="fixed-bottom font-small bg-primary">
 
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
           <p> UltraGroupBank </p>
