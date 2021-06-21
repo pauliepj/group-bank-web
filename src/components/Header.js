@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from 'react-router-dom'
 
 
-function Header (){
+function Header (props){
     
         return(
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,10 +14,12 @@ function Header (){
         <div class="navbar-nav">
         <Link to="/" class="nav-item nav-link active" >Home <span class="sr-only">(current)</span></Link>
         <Link to="/accounts" class="nav-item nav-link" >Accounts</Link>
-        <Link to="/profile" class="nav-item nav-link" >Edit Profile</Link>
+        <Link to="/profile" class="nav-item nav-link" >Profile</Link>
         <Link to="/login" class="nav-item nav-link" >Log in</Link>
     </div>
   </div>
+  <p className= "text-left">{props.currentUser.userName}</p>
+
 </nav>
     );
 }

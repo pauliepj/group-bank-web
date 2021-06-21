@@ -2,32 +2,8 @@ import React, { Component, useEffect, useState } from "react";
 import CustomerDataService from "../data/CustomerDataService"
 
 
-function Profile(){
+function Profile(props){
   
-  const [profile, setProfile] = useState([]);  
-
-  const fetchProfile = async () => {
-    try{
-      fetch('http://localhost:7060/dummycustomer', {
-          "method": "GET",
-          "headers": {
-              "Content-Type": "application/json"
-          },
-      })
-          .then(res => res.json())
-          .then(data => {
-              setProfile(data);
-          })
-  } catch (err) {
-      console.error(err);
-  }
-  }
-
-  
-    useEffect(() =>{
-      fetchProfile();
-    },[])
-      
       return(
       
         <div className="container">
@@ -46,13 +22,13 @@ function Profile(){
           <tbody>
                 
                 <tr>
-                <td>{profile.customerId}</td>
-                <td>{profile.customerName}</td>
-                <td>{profile.userName}</td>
-                <td>{profile.password}</td>
-                <td>{profile.phone}</td>
-                <td>{profile.email}</td>
-                <td>{profile.city}</td>
+                <td>{props.currentUser.customerId}</td>
+                <td>{props.currentUser.customerName}</td>
+                <td>{props.currentUser.userName}</td>
+                <td>{props.currentUser.password}</td>
+                <td>{props.currentUser.phone}</td>
+                <td>{props.currentUser.email}</td>
+                <td>{props.currentUser.city}</td>
 
                 </tr>
               
