@@ -8,7 +8,8 @@ import Profile from './components/Profile';
 import React from 'react';
 import Account from './components/Account';
 import { useEffect, useState } from "react";
-
+import { Canvas } from '@react-three/fiber'
+import { Html, Box } from '@react-three/drei'
 
 
 
@@ -60,11 +61,8 @@ function App(){
     
 
 
-  return (
-    <div>
-      
+  return (        
       <BrowserRouter>
-        
       <Header currentUser = {currentUser}/>
       <Switch>
       <Route exact path="/"><HomePage /></Route>
@@ -72,10 +70,9 @@ function App(){
       <Route exact path="/accounts" ><Account currentUser = {currentUser} accounts = {accounts} /></Route>
       <Route exact path="/profile" ><Profile currentUser = {currentUser}/></Route>
       </Switch>
+      
       <Footer/>
       </BrowserRouter>
-      
-    </div>
   )
 }
 
