@@ -11,6 +11,7 @@ export default function Model1(props) {
   const { actions } = useAnimations(animations, group)
   useEffect(() => {
      actions.idle_wide.play();
+     
       
   })
   return (

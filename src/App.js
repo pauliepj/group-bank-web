@@ -10,6 +10,7 @@ import Account from './components/Account';
 import { useEffect, useState } from "react";
 import { Canvas } from '@react-three/fiber'
 import { Html, Box } from '@react-three/drei'
+import SignInPage from './components/SignInPage';
 
 
 
@@ -65,7 +66,7 @@ function App(){
       <Header currentUser = {currentUser}/>
       <Switch>
       <Route exact path="/"><HomePage /></Route>
-      <Route exact path="/login"><LoginPage users = {users} setCurrentUser= {setCurrentUser}/></Route>
+      <Route exact path="/login"><SignInPage users = {users} setCurrentUser= {setCurrentUser}/></Route>
       <Route exact path="/accounts" ><Account currentUser = {currentUser} accounts = {accounts} /></Route>
       <Route exact path="/profile" ><Profile currentUser = {currentUser}/></Route>
       </Switch>
