@@ -8,7 +8,9 @@ function SignInPage (props){
     return(
 
         <div>
+            <br/><br/>
             <SignIn setUsers={props.setUsers} users={props.users} setCurrentUser={props.setCurrentUser}/>
+            <br/><br/>
         </div>
     );
 }

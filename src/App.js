@@ -66,7 +66,7 @@ function App(){
       <Header currentUser = {currentUser}/>
       <Switch>
       <Route exact path="/"><HomePage /></Route>
-      <Route exact path="/login"><SignInPage users = {users} setCurrentUser= {setCurrentUser}/></Route>
+      <Route exact path="/login"><SignInPage setUsers = {setUsers} users = {users} setCurrentUser= {setCurrentUser}/></Route>
       <Route exact path="/accounts" ><Account currentUser = {currentUser} accounts = {accounts} /></Route>
       <Route exact path="/profile" ><Profile currentUser = {currentUser}/></Route>
       </Switch>

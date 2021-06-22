@@ -4,26 +4,40 @@ import '../style/SignInStyle.css';
 
 function SignIn(props) {
 
-    const [username, setUsername] = useState(0);
+    const [userName, setUsername] = useState(0);
     const [pass, setPass] = useState(0);
     const [pass2, setPass2] = useState(0);
     const history = useHistory();
-
+    const [customerName, setCustomerName] = useState(0);
+    const [phone, setPhone] = useState(0);
+    const [email, setEmail] = useState(0);
+    const [city, setCity] = useState(0);
+    
     const handleUserNameChange = (e) => {
         setUsername(e.target.value);
     }
-
     const handlePassChange = (e) => {
         setPass(e.target.value);
     }
-
+    const handleRealNameChange = (e) => {
+        setCustomerName(e.target.value);
+    }
+    const handlePhoneChange = (e) => {
+        setPhone(e.target.value);
+    }
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    }
+    const handleCityChange = (e) => {
+        setCity(e.target.value);
+    }
     const handlePassSignUpVerificationChange = (e) => {
         setPass2(e.target.value);
     }
 
     const handleSubmitSignIn = (e) => {
         e.preventDefault();
-        const matches = props.users.filter(user=>user.username===username);
+        const matches = props.user.filter(user=>user.userName===userName);
         matches.forEach(match => {
             if (match.password === pass){
                 props.setCurrentUser(match);
@@ -38,21 +52,24 @@ function SignIn(props) {
         if (pass === pass2) {
 
             try{
-                fetch(`http://jumpfinalprojectusersservice-env.eba-jm5kjp4s.us-east-1.elasticbeanstalk.com/api/add/user`, {
+                fetch(`http://localhost:7060/customer`, {
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json"
                     },
                     "body": JSON.stringify({
-                        username: username,
+                        userName: userName,
                         password: pass,
-                        role: "ROLE_USER"
+                        customerName: customerName,
+                        phone: phone,
+                        email: email,
+                        city: city
                     })
                 })
                     .then(res => res.json())
                     .then(data => {
                         props.setUsers({...props.users, data});
-                        props.setCurrentUser({ username: username, pass: pass });
+                        props.setCurrentUser({ userName: userName, pass: pass, customerName: customerName, phone: phone, email: email, city: city });
                     })
                 history.push("/");
             } catch (err) {
@@ -93,6 +110,10 @@ function SignIn(props) {
                                         <div className="group"> <label htmlFor="user" className="label">Username</label> <input id="input-user2" type="text" className="input" placeholder="Create your Username" onChange={handleUserNameChange}></input> </div>
                                         <div className="group"> <label htmlFor="pass" className="label">Password</label> <input id="input-pass2" type="password" className="input" data-type="password" placeholder="Create your password" autoComplete="on" onChange={handlePassChange}></input> </div>
                                         <div className="group"> <label htmlFor="pass" className="label">Repeat Password</label> <input id="input-pass3" type="password" className="input" data-type="password" placeholder="Repeat your password" autoComplete="on" onChange={handlePassSignUpVerificationChange}></input></div>
+                                        <div className="group"> <label htmlFor="user-name" className="label">Name</label> <input id="input-username" type="text" className="input" placeholder="Real name here" onChange={handleRealNameChange}></input> </div>
+                                        <div className="group"> <label htmlFor="user-phone" className="label">Phone Number</label> <input id="input-user-phone" type="text" className="input" placeholder="Type phone number" onChange={handlePhoneChange}></input> </div>
+                                        <div className="group"> <label htmlFor="user-email" className="label">Email</label> <input id="input-user-email" type="text" className="input" placeholder="Give us your email" onChange={handleEmailChange}></input> </div>
+                                        <div className="group"> <label htmlFor="user-city" className="label">City</label> <input id="input-user-city" type="text" className="input" placeholder="What city are you in?" onChange={handleCityChange}></input> </div>
                                         <div className="group">
                                         <input type="submit" className="button" value="Sign Up"></input> </div>
                                         <div className="hr"></div>
