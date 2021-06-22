@@ -1,10 +1,11 @@
 import React, { Component, useEffect } from "react";
+import { Link, withRouter } from 'react-router-dom'
+
 
 function Account(props){
     
-  const matches = props.accounts.filter(user=>user.customerId===props.currentUser.customerId);
+  const matches = props.accounts.filter(user=>user.customerId = props.currentUser.customerId);
   
-
     return(
     
       <div className="container">
@@ -35,6 +36,8 @@ function Account(props){
           }
         </tbody>
       </table>
+      <Link to="/newaccount" class="btn btn-success" >+</Link>
+
       </div>
     )
   

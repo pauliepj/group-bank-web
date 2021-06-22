@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { Canvas } from '@react-three/fiber'
 import { Html, Box } from '@react-three/drei'
 import SignInPage from './components/SignInPage';
-
+import NewAccount from './components/NewAccount';
 
 
 function App(){
@@ -20,7 +20,7 @@ function App(){
     const [accounts, setAccounts] = useState([]);
     const [currentUser, setCurrentUser] = useState({})
     
-
+    
     const fetchAccount = async () => {
       try{
         fetch('http://localhost:6060/allaccounts', {
@@ -37,6 +37,7 @@ function App(){
         console.error(err);
     }
     }
+
     const fetchProfile = async () => {
       try{
         fetch('http://localhost:7060/allcustomers', {
@@ -67,8 +68,9 @@ function App(){
       <Switch>
       <Route exact path="/"><HomePage /></Route>
       <Route exact path="/login"><SignInPage setUsers = {setUsers} users = {users} setCurrentUser= {setCurrentUser}/></Route>
-      <Route exact path="/accounts" ><Account currentUser = {currentUser} accounts = {accounts} /></Route>
+      <Route exact path="/accounts" ><Account setAccounts= {setAccounts} currentUser = {currentUser} accounts = {accounts} /></Route>
       <Route exact path="/profile" ><Profile currentUser = {currentUser}/></Route>
+      <Route exact path="/newaccount"><NewAccount  accounts = {accounts}  setAccounts = {setAccounts} currentUser= {currentUser}/></Route>
       </Switch>
       
       <Footer/>
