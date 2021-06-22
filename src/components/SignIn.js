@@ -37,7 +37,7 @@ function SignIn(props) {
 
     const handleSubmitSignIn = (e) => {
         e.preventDefault();
-        const matches = props.user.filter(user=>user.userName===userName);
+        const matches = props.users.filter(user=>user.userName===userName);
         matches.forEach(match => {
             if (match.password === pass){
                 props.setCurrentUser(match);
