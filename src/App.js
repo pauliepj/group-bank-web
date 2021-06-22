@@ -31,7 +31,6 @@ function App(){
             .then(res => res.json())
             .then(data => {
                 setAccounts(data);
-                console.log(data)
             })
     } catch (err) {
         console.error(err);
