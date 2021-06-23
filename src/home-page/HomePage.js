@@ -25,7 +25,7 @@ function HomePage(){
             </Text>
             <Suspense fallback={null}>
             <Model/>
-            <Model1/>
+            <Model1 />
             </Suspense>
         </Canvas>
     );

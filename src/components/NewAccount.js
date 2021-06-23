@@ -48,8 +48,8 @@ function NewAccount(props){
                         props.setAccounts([...props.accounts, {...data}]);
                         
                     })
-                history.push("/accounts");
-            } catch (err) {
+                    history.push("/accounts");
+                } catch (err) {
                 console.error(err);
             }
     }

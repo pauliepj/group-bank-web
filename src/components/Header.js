@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Link, withRouter } from 'react-router-dom'
+import { Link, useHistory, withRouter } from 'react-router-dom'
 
 
 function Header (props){
-  const [icon, setIcon] = useState({});
+  const [icon, setIcon] = useState();
   const [showIcon, setShowIcon] = useState({});
+  const history = useHistory();
+  const logOut= () =>{
+
+    history.push("/login");
+    window.location.reload();
+
+  }
     useEffect(() =>{
-      if(props.currentUser != null)
+      if(props.currentUser.userName != null)
       {
         let choice;
         choice = (
         <span>
           <p className= "text-left">{props.currentUser.userName} </p>
-          <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-sign-out fa-2x" onClick = {logOut} aria-hidden="true"></i>
           </span>        
         )
         setIcon(choice)
@@ -30,13 +37,10 @@ function Header (props){
         <Link to="/accounts" class="nav-item nav-link" >Accounts</Link>
         <Link to="/profile" class="nav-item nav-link" >Profile</Link>
         <Link to="/login" class="nav-item nav-link" >Log in</Link>
-    </div>
-  </div>
-  <span>
-          <p className= "text-left">{props.currentUser.userName}</p>
-          <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
-          </span>  
-</nav>
+       </div>
+       </div>
+          {icon}
+    </nav>
     );
 }
 
