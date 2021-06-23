@@ -13,7 +13,7 @@ import Model1 from "./Coin";
 function HomePage(){
     const [x, setX] = useState(0)
     useEffect(() => {
-        setX(x + 0.001);
+        setX(x + 0.0005);
     },[x])
       
     return(
