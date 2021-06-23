@@ -5,7 +5,7 @@ import '../style/SignInStyle.css';
 function SignIn(props) {
 
     const [userName, setUsername] = useState(0);
-    const [pass, setPass] = useState(0);
+    const [password, setPassword] = useState(0);
     const [pass2, setPass2] = useState(0);
     const history = useHistory();
     const [customerName, setCustomerName] = useState(0);
@@ -17,7 +17,7 @@ function SignIn(props) {
         setUsername(e.target.value);
     }
     const handlePassChange = (e) => {
-        setPass(e.target.value);
+        setPassword(e.target.value);
     }
     const handleRealNameChange = (e) => {
         setCustomerName(e.target.value);
@@ -34,12 +34,15 @@ function SignIn(props) {
     const handlePassSignUpVerificationChange = (e) => {
         setPass2(e.target.value);
     }
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
 
     const handleSubmitSignIn = (e) => {
         e.preventDefault();
         const matches = props.users.filter(user=>user.userName===userName);
         matches.forEach(match => {
-            if (match.password === pass){
+            if (match.password === password){
                 props.setCurrentUser(match);
 
                 history.push("/");
@@ -49,7 +52,7 @@ function SignIn(props) {
 
     const handleSubmitSignUp = async (e) => {
         e.preventDefault();
-        if (pass === pass2) {
+        if (password === pass2) {
 
             try{
                 fetch(`http://localhost:7060/customer`, {
@@ -59,7 +62,7 @@ function SignIn(props) {
                     },
                     "body": JSON.stringify({
                         userName: userName,
-                        password: pass,
+                        password: password,
                         customerName: customerName,
                         phone: phone,
                         email: email,
@@ -69,9 +72,9 @@ function SignIn(props) {
                     .then(res => res.json())
                     .then(data => {
                         props.setUsers({...props.users, data});
-                        props.setCurrentUser({ userName: userName, pass: pass, customerName: customerName, phone: phone, email: email, city: city });
+                        props.setCurrentUser({ userName: userName, password: password, customerName: customerName, phone: phone, email: email, city: city });
                     })
-                history.push("/");
+                refreshPage();
             } catch (err) {
                 console.error(err);
             }

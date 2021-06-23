@@ -70,7 +70,7 @@ function App(){
       <Route exact path="/login"><SignInPage setUsers = {setUsers} users = {users} setCurrentUser= {setCurrentUser}/></Route>
       <Route exact path="/accounts" ><Account setAccounts= {setAccounts} currentUser = {currentUser} accounts = {accounts} /></Route>
       <Route exact path="/profile" ><Profile currentUser = {currentUser}/></Route>
-      <Route exact path="/newaccount"><NewAccount  accounts = {accounts}  setAccounts = {setAccounts} currentUser= {currentUser}/></Route>
+      <Route exact path="/newaccount"><NewAccount  setAccounts = {setAccounts} fetchAccount = {fetchAccount} accounts = {accounts} currentUser= {currentUser}/></Route>
       </Switch>
       
       <Footer/>

@@ -21,9 +21,11 @@ function NewAccount(props){
         setBranchcode(e.target.value);
     }
     const handleBank = (e) => {
+        console.log(props.accounts);
         setBank(e.target.value);
     }
     const history = useHistory();
+    
 
     const handleAccountCreation = async (e) => {
         e.preventDefault();
@@ -38,12 +40,13 @@ function NewAccount(props){
                         accountType: accountType,
                         balance: balance,
                         branchCode: branchCode,
-                        bank: bank,
+                        bank: bank
                     })
                 })
                     .then(res => res.json())
                     .then(data => {
-                        props.setAccounts([{customerId: props.customerId, accountType: accountType, balance: balance, branchCode: branchCode, bank: bank}]);
+                        props.setAccounts([...props.accounts, {...data}]);
+                        
                     })
                 history.push("/accounts");
             } catch (err) {

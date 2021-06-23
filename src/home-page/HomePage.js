@@ -14,21 +14,20 @@ function HomePage(){
     
       
     return(
-        <div></div>
-        // <Canvas camera = {{position:[5,5,5], fov: 90}}>
-        //     {/* <ambientLight intensity={2} /> */}
-        //      <pointLight position={[10, 10, 0]} />
-        //     <OrbitControls />
+        <Canvas camera = {{position:[5,5,5], fov: 90}}>
+            {/* <ambientLight intensity={2} /> */}
+             <pointLight position={[10, 10, 0]} />
+            <OrbitControls />
             
                 
-        //     <Text rotation= {[0, Math.PI/2, 0]} position= {[0,5,0]} color="blue" anchorX="center" anchorY="middle" fontSize = ".5">
-        //         Welcome to the U.G.B's virtual ATM
-        //     </Text>
-        //     <Suspense fallback={null}>
-        //     <Model/>
-        //     <Model1/>
-        //     </Suspense>
-        // </Canvas>
+            <Text rotation= {[0, Math.PI/2, 0]} position= {[0,5,0]} color="blue" anchorX="center" anchorY="middle" fontSize = ".5">
+                Welcome to the U.G.B's virtual ATM
+            </Text>
+            <Suspense fallback={null}>
+            <Model/>
+            <Model1/>
+            </Suspense>
+        </Canvas>
     );
     
 }

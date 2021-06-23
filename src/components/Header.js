@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, withRouter } from 'react-router-dom'
 
 
 function Header (props){
-    
+  const [icon, setIcon] = useState({});
+  const [showIcon, setShowIcon] = useState({});
+    useEffect(() =>{
+      if(props.currentUser != null)
+      {
+        let choice;
+        choice = (
+        <span>
+          <p className= "text-left">{props.currentUser.userName} </p>
+          <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+          </span>        
+        )
+        setIcon(choice)
+      }
+    },[props.currentUser])
         return(
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand">Ultra Group Bank</a>
@@ -18,8 +32,10 @@ function Header (props){
         <Link to="/login" class="nav-item nav-link" >Log in</Link>
     </div>
   </div>
-  <p className= "text-left">{props.currentUser.userName}</p>
-
+  <span>
+          <p className= "text-left">{props.currentUser.userName}</p>
+          <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+          </span>  
 </nav>
     );
 }

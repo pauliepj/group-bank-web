@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 function Account(props){
     
-  const matches = props.accounts.filter(user=>user.customerId = props.currentUser.customerId);
+  const matches = props.accounts.filter(user=>user.customerId == props.currentUser.customerId);
   
     return(
     
