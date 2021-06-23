@@ -11,7 +11,10 @@ import Model from "./Machine";
 import Model1 from "./Coin";
   
 function HomePage(){
-    
+    const [x, setX] = useState(0)
+    useEffect(() => {
+        setX(x + 0.001);
+    },[x])
       
     return(
         <Canvas camera = {{position:[5,5,5], fov: 90}}>
@@ -20,11 +23,11 @@ function HomePage(){
             <OrbitControls />
             
                 
-            <Text rotation= {[0, Math.PI/2, 0]} position= {[0,5,0]} color="blue" anchorX="center" anchorY="middle" fontSize = ".5">
+            <Text rotation= {[0, Math.PI/2 + x, 0]} position= {[0,5,0]} color="blue" anchorX="center" anchorY="middle" fontSize = ".5">
                 Welcome to the U.G.B's virtual ATM
             </Text>
             <Suspense fallback={null}>
-            <Model/>
+            <Model rotation= {[0, x ,0]}/>
             <Model1 />
             </Suspense>
         </Canvas>
